@@ -1,6 +1,3 @@
-Nice — I’ll give you two small static web apps (V1 and V2), a Dockerfile that serves either app using `nginx:alpine`, commands to build & run the container, and Kubernetes manifests: a `Deployment` and a `NodePort` `Service`. Both apps are single-file HTML/CSS/JS so you can drop them into folders `app-v1/` and `app-v2/`.
-
----
 
 # How files are organized (suggested)
 
@@ -599,22 +596,4 @@ kubectl set image deployment/ocotoops-app ocotoops-container=yourdockerhubuserna
 kubectl rollout status deployment/ocotoops-app
 ```
 
----
-
-# Notes & small tips
-
-* The apps are static single-file HTML — no build step required.
-* Use `nginx` base image so it's production-sensible for static sites.
-* If you want separate Deployments for v1 and v2, change `metadata.name` and labels.
-* If your cluster disallows static NodePort, use a LoadBalancer service or Ingress (I can provide Ingress manifest if you want).
-* Replace `yourdockerhubusername/...` with your actual image repo if you plan to push.
-
----
-
-If you want, I can:
-
-* Put both apps into a single repository layout and produce a small `Makefile` or `docker-compose.yml`.
-* Provide a Helm chart for deployment.
-* Add an Ingress manifest (for clusters with an ingress controller).
-  Which of those would you like next?
 
